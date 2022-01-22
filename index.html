@@ -15,6 +15,7 @@
 
 <body>
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="javascript:void(0)" onclick="fbLogin()">Login with Facebook</a>
     <div class="data">
         <p class="alert alert-success">Profile Details</p>
         <img id="pic" class="img-circle" />
@@ -24,6 +25,53 @@
         <p id="email" class="alert alert-danger"></p>
         <button onclick="signOut()" class="btn btn-danger">Sign Out</button>
     </div>
+
+    <!-- Facebook SDK -->
+
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '{your-app-id}',
+                cookie: true,
+                xfbml: true,
+                version: '{api-version}'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function fbLogin() {
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    afterLogin();
+                }
+            })
+        }
+
+        function afterLogin() {
+
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    FB.api('/me', function(response) {
+                        console.log(response);
+                    })
+                }
+            });
+        }
+    </script>
+
     <script src="./index.js"></script>
 </body>
 
