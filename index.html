@@ -27,6 +27,10 @@
         <p id="email" class="alert alert-danger"></p>
         <button onclick="signOut()" class="btn btn-danger">Sign Out</button>
     </div>
+    <div class="fb">
+        <p>Name</p>
+        <p id="fbname"></p>
+    </div>
 
     <!-- Facebook SDK -->
 
@@ -67,7 +71,8 @@
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
                     FB.api('/me', function(response) {
-                        console.log(response);
+                        $('.fb').css('display', 'block');
+                        $('#fbname').text(response.name);
                     })
                 }
             });
