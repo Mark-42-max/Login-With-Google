@@ -15,7 +15,9 @@
 
 <body>
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <a href="javascript:void(0)" onclick="fbLogin()">Login with Facebook</a>
+
+    <fb:login-button scope="public_profile,email" onlogin="fbLogin();">
+    </fb:login-button>
     <div class="data">
         <p class="alert alert-success">Profile Details</p>
         <img id="pic" class="img-circle" />
