@@ -16,8 +16,10 @@
 <body>
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-    <fb:login-button scope="public_profile,email" onlogin="fbLogin();">
-    </fb:login-button>
+    <div style="position: absolute; top: 50%; left: 50%;">
+        <fb:login-button scope="public_profile,email" onlogin="fbLogin();">
+        </fb:login-button>
+    </div>
     <div class="data">
         <p class="alert alert-success">Profile Details</p>
         <img id="pic" class="img-circle" />
