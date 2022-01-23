@@ -23,4 +23,6 @@ html {
 
 .fb {
     display: none;
+    font-size: 3rem;
+    transform: translateY(50%, 50%);
 }
